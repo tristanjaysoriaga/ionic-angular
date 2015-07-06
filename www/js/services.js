@@ -1,5 +1,21 @@
 angular.module('starter.services', [])
 
+.factory('instagram', ['$http',
+    function($http) {
+        return {
+            
+            fetchPopular: function(callback) {
+ 
+                var endPoint = "https://api.instagram.com/v1/media/popular?client_id=3a4bb728466b4322ada463f66e748ca7&callback=JSON_CALLBACK";
+
+                $http.jsonp(endPoint).success(function(response) {
+                    callback(response.data);
+                });
+            }
+        }
+    }
+])
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

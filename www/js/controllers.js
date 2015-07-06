@@ -1,6 +1,19 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope) {})
+.controller('HomeCtrl', function($scope, instagram) {
+  $scope.test = { name: 'asf'};
+  $scope.pics = [];
+
+  $scope.instaList = function(){
+
+    instagram.fetchPopular(function(data) {
+        for(var i=0; i<data.length; i++) {
+              $scope.pics.push(data[i]) ;
+          }
+    });
+  }
+  $scope.instaList();
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -16,6 +29,8 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   }
 })
+
+
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);

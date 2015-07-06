@@ -1,11 +1,11 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">Username</div>
-      <div class="item item-body">
+      <div class="item item-divider">{{test.name}}</div>
+      <div class="item item-body" ng-repeat="instaItem in pics">
         <div>
           <center>
-            <img src="http://placehold.it/350x350" alt="">
+            <img ng-src="{{instaItem.images.standard_resolution.url}}" alt="">
           </center>
         </div>
         <div class="row">
