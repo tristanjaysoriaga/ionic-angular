@@ -1,9 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope, instagram) {
+.controller('HomeCtrl', function($scope, instagramService) {
 
-  instagram.fetchPopular().success(function (data) {
+  instagramService.fetchPopular().then(function(data) {
     $scope.instaData = data.data;
+  }).catch(function() {
+    $scope.error = 'unable to get data';
   });
 
 

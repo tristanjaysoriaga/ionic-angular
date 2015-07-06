@@ -1,14 +1,23 @@
 angular.module('starter.services', [])
 
-.factory('instagram', ['$http',
-    function($http) {
+.factory('instagramService', ['$http', '$q',
+    function($http, $q) {
         return {
 
             fetchPopular: function() {
  
                 var endPoint = "https://api.instagram.com/v1/media/popular?client_id=3a4bb728466b4322ada463f66e748ca7&callback=JSON_CALLBACK";
 
-                return $http.jsonp(endPoint);
+                var defer = $q.defer();
+
+                $http.jsonp(endPoint).then(function(response) {
+                  defer.resolve(response.data);
+                }, function(response) {
+                  defer.reject(response);
+                });
+
+                return defer.promise;
+
             }
 
             // getComments: function (callback, mediaId) {
