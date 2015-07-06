@@ -1,8 +1,12 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">{{test.name}}</div>
-      <div class="item item-body" ng-repeat="instaItem in pics">
+    <div class="list card" ng-repeat="instaItem in instaData">
+      <div class="item item-divider">
+        <img ng-src="{{instaItem.user.profile_picture}}" width="25px" height="25px" alt="">
+        
+        <a href="#">{{instaItem.user.full_name}}</a>
+      </div>
+      <div class="item item-body">
         <div>
           <center>
             <img ng-src="{{instaItem.images.standard_resolution.url}}" alt="">
