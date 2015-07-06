@@ -3,15 +3,22 @@ angular.module('starter.services', [])
 .factory('instagram', ['$http',
     function($http) {
         return {
-            
-            fetchPopular: function(callback) {
+
+            fetchPopular: function() {
  
                 var endPoint = "https://api.instagram.com/v1/media/popular?client_id=3a4bb728466b4322ada463f66e748ca7&callback=JSON_CALLBACK";
 
-                $http.jsonp(endPoint).success(function(response) {
-                    callback(response.data);
-                });
+                return $http.jsonp(endPoint);
             }
+
+            // getComments: function (callback, mediaId) {
+            //     console.log(mediaId);
+            //     var endPoint = "https://api.instagram.com/v1/media/"+ mediaId +"/comments?client_id=3a4bb728466b4322ada463f66e748ca7&callback=JSON_CALLBACK"
+
+            //     $http.jsonp(endPoint).success(function(response) {
+            //         callback(response.data);
+            //     });
+            // }
         }
     }
 ])

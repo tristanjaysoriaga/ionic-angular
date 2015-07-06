@@ -1,20 +1,10 @@
 angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, instagram) {
-  $scope.test = { name: 'asf'};
-  $scope.instaData = [];
 
-  $scope.instaList = function(){
-
-    instagram.fetchPopular(function(data) {
-        for(var i=0; i<data.length; i++) {
-              $scope.instaData.push(data[i]);
-          }
-           console.log($scope.instaData)
-    });
-
-  }
-  $scope.instaList();
+  instagram.fetchPopular().success(function (data) {
+    $scope.instaData = data.data;
+  });
 
 
 })

@@ -34,14 +34,19 @@
         
         <button class="button button-clear">
           <i class="icon ion-ios-heart-outline"></i> 
-          xxx likes
+          {{instaItem.likes.count}} likes
         </button>
-    
         <div class="list">
-          <p>username</p>
-          <p>description</p>
+          <p><a href="">{{instaItem.user.full_name}}</a> <span>{{instaItem.caption.text}}</span></p>
+          <p><button ng-click="viewComments(instaItem.id)">view all {{instaItem.comments.count}} comments</a></p>
         </div>
       </div>
+
+      <ul class="list" >
+        <li ng-repeat="commentList in instaData">
+          <a href="">{{commentList.comments.text}}</a> <span>{{commentList.comments.text}}</span>
+        </li>
+      </ul>  
  
   </ion-content>
 </ion-view>
